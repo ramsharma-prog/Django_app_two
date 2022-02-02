@@ -1,0 +1,93 @@
+{% extends 'posts/posts_base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static '/css/posts_styles.css' %}">
+
+<div class="container">
+    <div class="post-detail container">
+        <h1 class='mt-2 mb-0'>{{object.title}}
+            <span style='font-size:15px;'>
+                <u>
+                    <!--To check if the current user is logged in & only current user can see the
+                    updated or delete options -->
+
+                    {% if object.author == user %}
+                    <a class='text-primary ml-3' href="{% url 'posts:post_update' object.id %}">Update</a>
+                    <a class='text-danger ml-2' href="{% url 'posts:post_delete' post.id %}">Delete</a>
+                    {% endif %}
+
+                </u>
+            </span>
+        </h1>
+        <hr>
+        <p class='mb-5'>{{ object.text}}</p>
+        <hr>
+    </div>
+    <div class="container">
+        <a  href="{% url 'posts:post_comment_list' post.id %}"> <span><b><u>Comment</u></b></span></a>
+    </div>
+
+
+
+    <!--COMMNET SECTION -->
+
+    <div class='container'>
+      {% for comment in post.comment_for_post.all %}
+      <br>
+      {% if  object.author == user %}
+      <div class="comment-post">
+          <ul>
+              <li>
+                  <p >{{comment.comment_text|safe}}. <span><a class = 'comment-links' href="{% url 'posts:reply' object.id %}"> Reply</a></span></p>
+                  <p class='text-capitalize'>From {{user.username}} on {{comment.date_posted|date:'d-M-y'}}.
+                      <span><a class = 'comment-links' href="{% url 'posts:delete_comment' comment.id %}">Delete comment?</a></span>
+                  </p>
+              </li>
+          </ul>
+
+          </div>
+          {%else %}
+          <div class="comment-post">
+          <ul>
+              <li>
+                  <p >{{comment.comment_text|safe}}. <span><a class = 'comment-links' href="{% url 'posts:reply' object.id %}"> Reply</a></span></p>
+                  <p class='text-capitalize' >From {{user.username}} on {{comment.date_posted|date:'d-M-y'}}.</p>
+              </li>
+          </ul>
+          {% endif %}
+          {% endfor %}
+          </div>
+
+          <!--REPLY TO COMMNET SECTION-->
+
+
+            {% for reply in comment.comment_reply.all %}
+            <br>
+            {% if comment %}
+
+            <div class="">
+                <ul>
+                    <li>
+                        <p >{{reply.reply_text}} </p>
+                        <p class='text-capitalize'>From {{user.username}} on {{comment.date_posted|date:'d-M-y'}}.</p>
+                    </li>
+                </ul>
+                </div>
+                {%else %}
+                <div class="">
+
+                    <ul>
+                        <li>
+                            <p >{{reply.reply_text|safe}}</p>
+                            <p class='text-capitalize'>From {{user.username}} on {{comment.date_posted|date:'d-M-y'}}.</p>
+                        </li>
+                    </ul>
+
+                {% endif %}
+                {% endfor %}
+                </div>
+
+
+
+
+    {% endblock content %}

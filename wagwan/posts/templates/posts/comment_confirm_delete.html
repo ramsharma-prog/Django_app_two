@@ -1,0 +1,18 @@
+{% extends 'posts/posts_base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class = 'container mt-4'>
+    <h2>Are you sure, you want to delete the comment?</h2>
+<form  method="POST">
+
+    {% csrf_token %}
+    {{ form|crispy }}
+    <input class = ' btn btn-outline-danger btn-sm mt-4' type="submit" name="" value="Yes, sure">
+    <a class = 'btn btn-outline-primary btn-sm mt-4 ml-2' href="{% url 'posts:post_details' object.comment_post.id %}">Cancel</a>
+
+</form>
+
+</div>
+
+{% endblock %}

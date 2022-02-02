@@ -1,0 +1,16 @@
+{% extends 'posts/posts_base.html' %}
+{% block content %}
+{%  load crispy_forms_tags %}
+
+<div class="container mt-2">
+    <form class=""  method="POST">
+        {% csrf_token %}
+        {{reply_form|crispy}}
+        <input type="submit" value="Reply">
+    </form>
+</div>
+
+
+
+
+{% endblock %}

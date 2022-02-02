@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<main role="main" class="container">
+    <div class="">
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+        </div>
+        <div class="col-md-4">
+            <div class="content-section">
+                <h3>Quick Sidebar</h3>
+                <p class='text-muted '>click on the link to access the page.
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-light">
+                        <a href="{% url 'posts:post_list' %}">Post List</a>
+                    </li>
+                    <li class="list-group-item list-group-item-light">
+                        <a href="{% url 'posts:create'%}">Create Post</a>
+                    </li>
+                    <li class="list-group-item list-group-item-light">
+                        <a href="#">Upcoming Events</a>
+                    </li>
+                    <li class="list-group-item list-group-item-light">
+                        <a href="#">etc</a>
+
+                    </li>
+                </ul>
+                </p>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+
+{% endblock content %}

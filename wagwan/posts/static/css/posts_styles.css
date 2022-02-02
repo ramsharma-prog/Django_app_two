@@ -1,0 +1,26 @@
+
+
+
+.paginator-bar {
+    background-color:white;
+    border:0px;
+    color:red;
+}
+
+.post-list-title{
+    color:#1863e3;
+}
+
+
+.post-list-link{
+    font-size: 12px;
+}
+
+.comment-post{
+    font-size: 12px;
+
+}
+
+.comment-links{
+        margin-left: 10px;
+}
