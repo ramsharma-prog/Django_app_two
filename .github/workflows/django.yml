@@ -29,7 +29,7 @@ jobs:
         python3 -m pip install --upgrade pip
     - name: install requirtements    
       run: |
-        pip install -r requirements.txt
+        pip install -r wagwan/requirements.txt 
     - name: Run Tests
       run: |
         python manage.py test
