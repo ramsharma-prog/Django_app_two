@@ -29,7 +29,7 @@ jobs:
         python3 -m pip install --upgrade pip
     - name: install requirtements    
       run: |
-        pip install git+https://github.com/ramsharma-prog/Django_app_two/blob/a6cfc1a9c7c1fb89594fef94dca764f3706fec75/wagwan/requirements.txt
+        pip install git+https://github.com/ramsharma-prog/Django_app_two/tree/master/wagwan/requirements.txt
     - name: Run Tests
       run: |
         python manage.py test
