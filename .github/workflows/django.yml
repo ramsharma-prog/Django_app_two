@@ -27,7 +27,7 @@ jobs:
       run: |
         source .venv/bin/activate
         python3 -m pip install --upgrade pip
-        pip install https://github.com/ramsharma-prog/Django_app_two/blob/master/wagwan/requirements.txt
+        pip install wagwan/requirements.txt
     - name: Run Tests
       run: |
         python manage.py test
