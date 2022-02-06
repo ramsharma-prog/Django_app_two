@@ -22,7 +22,7 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: create python environment 
-      run: python3 -m .venv
+      run: python3 -m venv .venv
     - name: Install Dependencies
       run: |
         source .venv/bin/activate
