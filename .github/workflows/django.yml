@@ -27,7 +27,8 @@ jobs:
       run: |
         source .venv/bin/activate
         python3 -m pip install --upgrade pip
-        pip install wagwan/requirements.txt
+    - name: install requirtements    
+        run: pip install wagwan/requirements.txt
     - name: Run Tests
       run: |
         python manage.py test
